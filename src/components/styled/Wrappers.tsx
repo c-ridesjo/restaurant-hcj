@@ -9,6 +9,13 @@ export const Wrapper = styled.div`
   padding: 1.25rem;
 `;
 
+export const CenteredWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+`;
+
 export const ContentWrapper = styled.div`
   width: 100%;
   max-width: 75rem; 
@@ -16,6 +23,13 @@ export const ContentWrapper = styled.div`
   padding: 1.25rem;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
   border-radius: 0.6rem; 
+`;
+
+export const ContactWrapper = styled.div`
+  width: 15rem;
+  background-color: #f0f4f6;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+  border-radius: 0.6rem;
 `;
 
 export const HeaderWrapper = styled.header`
