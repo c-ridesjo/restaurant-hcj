@@ -1,14 +1,18 @@
 import React from 'react';
-import Home from './Home';
+import { Footer } from './Footer';
+import { Outlet } from 'react-router-dom';
+import { Header } from './Header';
 
-interface LayoutProps {
-  title: string;
-  welcomeMessage: string;
-  cookieInformation: string;
-}
-
-const Layout: React.FC<LayoutProps> = ({ title, welcomeMessage, cookieInformation }) => {
-  return <Home title={title} welcomeMessage={welcomeMessage} cookieInformation={cookieInformation} />;
+const Layout: React.FC = () => {
+  return (
+    <>
+      <Header></Header>
+      <main>
+        <Outlet></Outlet>
+      </main>
+      <Footer></Footer>
+    </>
+  ) 
 };
 
 export default Layout;
