@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout';
-import { TableReservations } from './components/TableReservations';
 import { Contact } from './components/pages/Contact';
 import StartPage from './components/pages/StartPage';
+import { TableReservations } from './components/pages/TableReservations';
 
 export const router = createBrowserRouter([
 	{
