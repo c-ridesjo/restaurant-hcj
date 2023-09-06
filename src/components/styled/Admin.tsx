@@ -4,6 +4,10 @@ export const AdminContainer = styled.div`
   padding: 20px;
 `;
 
+export const AddBookingContainer = styled.div`
+  margin-bottom: 20px;
+`;
+
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
@@ -32,10 +36,6 @@ export const ActionButton = styled.button`
   &:hover {
     opacity: 0.8;
   }
-`;
-
-export const AddBookingContainer = styled.div`
-  margin-bottom: 20px;
 `;
 
 export const Input = styled.input`

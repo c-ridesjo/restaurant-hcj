@@ -14,7 +14,7 @@ export const H2 = styled.h2`
   font-family: 'Roboto', sans-serif;
   font-size: 2rem;
   color: green;
-  text-align: left;
+  text-align: center;
   padding: 3rem;
   margin: auto;
 `;
