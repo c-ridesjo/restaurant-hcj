@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useLoaderData } from 'react-router-dom';
 import { IBookingsLoader } from '../../../loaders/bookingsLoader';
 import { BookingsReducer, ActionType } from '../../../reducers/BookingsReducer';
-import { CenteredWrapper } from '../../styled/Wrappers';
+import { CenteredWrapper, SmallWrapper } from '../../styled/Wrappers';
 registerLocale('en', en);
 
 export const BookingDatePicker = () => {
@@ -29,7 +29,7 @@ export const BookingDatePicker = () => {
   // clicking on a time should set the var isBookingTable in Booking.tsx to true.
 
   return (
-    <section>
+    <CenteredWrapper>
       <form onSubmit={getAvaliableTables}>
         <div>
           <span>Date: </span>
@@ -59,9 +59,9 @@ export const BookingDatePicker = () => {
         <button>Search</button>
       </form>
 
-      <CenteredWrapper className={isHidden ? 'hidden' : 'showing'}>
-        Display avaliable times for the date here
-      </CenteredWrapper>
-    </section>
+      <SmallWrapper className={isHidden ? 'hidden' : 'showing'}>
+        <p>Display avaliable times for the date here</p>
+      </SmallWrapper>
+    </CenteredWrapper>
   );
 }
