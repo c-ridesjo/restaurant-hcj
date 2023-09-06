@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout';
 import { Contact } from './components/pages/Contact';
 import StartPage from './components/pages/StartPage';
-import { TableReservations } from './components/pages/TableReservations';
+import { Booking } from './components/pages/Booking/Booking';
 import { bookingsLoader } from './loaders/bookingsLoader';
 
 export const router = createBrowserRouter([
@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
 			{
 				path: '/booking',
 				loader: bookingsLoader,
-				element: <TableReservations />,
+				element: <Booking />,
 			},
 			{
 				path: '/contact',

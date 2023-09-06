@@ -9,5 +9,6 @@ export const getBookings = async () => {
 };
 
 export const getRestaurant = async () => {
-	return await get<IRestaurant>('restaurant/' + restaurantId);
-};
+	const response = await get<IRestaurant[]>('restaurant/' + restaurantId);
+	return response[0];
+}
