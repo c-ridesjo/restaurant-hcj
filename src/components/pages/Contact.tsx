@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getRestaurant } from "../../services/RestaurantService";
 import { IRestaurant } from "../../models/IRestaurant";
-import { CenteredWrapper, ContactWrapper } from "../styled/Wrappers";
+import { CenteredWrapper, SmallWrapper } from "../styled/Wrappers";
 
 export const Contact = () => {
 	const [restaurant, setRestaurant] = useState<IRestaurant>({
@@ -23,10 +23,10 @@ export const Contact = () => {
 		<CenteredWrapper>
 			<p><strong>In the mood for some seafood?</strong></p>
 			<p>Come visit us at:</p>
-			<ContactWrapper>
+			<SmallWrapper>
 			<p>{restaurant.address}</p>
 			<p>{restaurant.zip} {restaurant.city}</p>
-			</ContactWrapper>
+			</SmallWrapper>
 		</CenteredWrapper>
 	);
 };

@@ -1,0 +1,11 @@
+.hidden {
+  display: none;
+}
+
+.showing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  margin: 2rem;
+}

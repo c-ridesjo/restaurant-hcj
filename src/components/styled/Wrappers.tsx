@@ -25,7 +25,7 @@ export const ContentWrapper = styled.div`
   border-radius: 0.6rem; 
 `;
 
-export const ContactWrapper = styled.div`
+export const SmallWrapper = styled.div`
   width: 15rem;
   background-color: #f0f4f6;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
