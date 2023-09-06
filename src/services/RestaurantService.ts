@@ -1,4 +1,5 @@
 import { IBooking } from '../models/IBookings';
+import { IRestaurant } from '../models/IRestaurant';
 import { get } from './ServiceBase';
 
 export const getBookings = async () => {
@@ -8,5 +9,6 @@ export const getBookings = async () => {
 };
 
 export const getRestaurant = async () => {
-	return await get('restaurant/' + import.meta.env.VITE_RESTAURANT_ID);
+	const response = await get<IRestaurant[]>('restaurant/' + import.meta.env.VITE_RESTAURANT_ID);
+	return response[0];
 };
