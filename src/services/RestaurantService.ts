@@ -1,4 +1,5 @@
 import { IBooking } from '../models/IBookings';
+import { IRestaurant } from '../models/IRestaurant';
 import { get } from './ServiceBase';
 
 const restaurantId = import.meta.env.VITE_RESTAURANT_ID;
@@ -8,5 +9,5 @@ export const getBookings = async () => {
 };
 
 export const getRestaurant = async () => {
-	return await get('restaurant/' + restaurantId);
+	return await get<IRestaurant>('restaurant/' + restaurantId);
 };
