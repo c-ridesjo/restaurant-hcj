@@ -1,4 +1,5 @@
 import { IBooking } from '../models/IBookings';
+import { IRestaurant } from '../models/IRestaurant';
 import { get } from './ServiceBase';
 
 const restaurantId = import.meta.env.VITE_RESTAURANT_ID;
