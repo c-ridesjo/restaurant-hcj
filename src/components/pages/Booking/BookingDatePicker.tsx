@@ -5,6 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useLoaderData } from 'react-router-dom';
 import { IBookingsLoader } from '../../../loaders/bookingsLoader';
 import { BookingsReducer, ActionType } from '../../../reducers/BookingsReducer';
+import { CenteredWrapper } from '../../styled/Wrappers';
 registerLocale('en', en);
 
 export const BookingDatePicker = () => {
@@ -58,9 +59,9 @@ export const BookingDatePicker = () => {
         <button>Search</button>
       </form>
 
-      <div className={isHidden ? 'hidden' : 'showing'}>
-        {JSON.stringify(bookingsList)}
-      </div>
+      <CenteredWrapper className={isHidden ? 'hidden' : 'showing'}>
+        Display avaliable times for the date here
+      </CenteredWrapper>
     </section>
   );
 }

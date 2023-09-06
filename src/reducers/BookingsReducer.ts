@@ -17,10 +17,8 @@ export const BookingsReducer = (
 	action: IAction
 ): IBooking[] => {
 	switch (action.type) {
-		case ActionType.GOTBOOKINGS: {
-			const bookings = JSON.parse(action.payload);
-			return bookings.bookings;
-		}
+		case ActionType.GOTBOOKINGS:
+			return JSON.parse(action.payload);
 		default:
 			return state;
 	}
