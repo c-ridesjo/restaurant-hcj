@@ -3,21 +3,20 @@ import { ChangeEvent, FormEvent, useReducer, useState } from 'react';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useLoaderData } from 'react-router';
-import { IBookingsLoader } from '../../loaders/bookingsLoader';
-import { ActionType, BookingsReducer } from '../../reducers/BookingsReducer';
+import { IBooking } from '../../models/IBookings';
+import { BookingsReducer } from '../../reducers/BookingsReducer';
 registerLocale('sv', sv);
 
 export const TableReservations = () => {
-	const [bookingsList, dispatch] = useReducer(BookingsReducer, []);
-	const bookings = useLoaderData() as IBookingsLoader;
+	const bookings = useLoaderData() as IBooking[];
+	const [bookingsList] = useReducer(BookingsReducer, bookings);
 
-	if (bookingsList.length === 0) {
-		dispatch({
-			type: ActionType.GOTBOOKINGS,
-			payload: JSON.stringify(bookings),
-		});
-	}
-	console.log(bookingsList.length);
+	// if (bookingsList.length === 0) {
+	// 	dispatch({
+	// 		type: ActionType.GOTBOOKINGS,
+	// 		payload: JSON.stringify(bookings),
+	// 	});
+	// }
 
 	const [startDate, setStartDate] = useState(new Date());
 	const [customerAmount, setCustomerAmount] = useState<number>(1);
@@ -35,7 +34,8 @@ export const TableReservations = () => {
 				startDate.getFullYear()
 		);
 	};
-
+	console.log(bookingsList);
+	// console.log(bookings);
 	return (
 		<section>
 			<form onSubmit={getAvaliableTables}>

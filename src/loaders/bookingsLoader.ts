@@ -8,7 +8,7 @@ export interface IBookingsLoader {
 export const bookingsLoader = async () => {
 	const response = await getBookings();
 
-	const data: IBookingsLoader = { bookings: response };
+	// const data: IBookingsLoader = { bookings: response };
 
-	return data;
+	return response;
 };
