@@ -1,6 +1,6 @@
 import React from 'react';
 import { IBooking } from '../models/IBookings';
-import { TableData, SaveButton } from '../components/styled/Admin';
+import { TableData, SaveButton, AdminP } from '../components/styled/Admin';
 
 interface AdminFormProps {
   booking: IBooking | null;
@@ -31,7 +31,7 @@ export const AdminForm: React.FC<AdminFormProps> = ({ booking }) => {
           </tbody>
         </table>
       ) : (
-        <div>No booking selected</div>
+        <AdminP>No booking selected</AdminP>
       )}
         <SaveButton onClick={handleSaveChanges}>Save Changes</SaveButton>
      

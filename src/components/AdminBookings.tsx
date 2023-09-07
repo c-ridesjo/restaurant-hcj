@@ -1,6 +1,7 @@
 import React from 'react';
 import { IBooking } from '../models/IBookings';
-import { TableRow, TableData } from '../components/styled/Admin';
+import { H2 } from './styled/Headings';
+import { AdminP } from './styled/Admin';
 
 interface AdminBookingsProps {
   bookings: IBooking[];
@@ -9,39 +10,25 @@ interface AdminBookingsProps {
 
 export const AdminBookings: React.FC<AdminBookingsProps> = ({ bookings, onSelect }) => {
     return (
-        <div style={{ overflowY: 'auto', width: '60%' }}>
-          <table>
-            <thead>
-              <tr>
-                <th>Customer ID</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Number of guests</th>
-              </tr>
-            </thead>
-            <tbody>
+        <section>
+          <H2>Bookings</H2>
+            <div>
               {bookings.length > 0 ? (
                 bookings.map((booking) => (
-                  <TableRow key={booking.id} onClick={() => onSelect(booking)}>
-                    <TableData>{booking.customerId}</TableData>
-                    <TableData>{booking.date}</TableData>
-                    <TableData>{booking.time}</TableData>
-                    <TableData>{booking.numberOfGuests}</TableData>
-                  </TableRow>
+                  <article key={booking.id} onClick={() => onSelect(booking)}>                    
+                    <p>Customer ID: {booking.customerId}</p>
+                    <p>Date: {new Date(booking.date).toLocaleDateString()}</p>
+                    <p>Time: {booking.time}</p>
+                    <p>Number of guests: {booking.numberOfGuests}</p>
+                  </article>
                 ))
               ) : (
-                <TableRow>
-                  <TableData> - </TableData>
-                  <TableData> - </TableData>
-                  <TableData> - </TableData>
-                  <TableData> - </TableData>
-                </TableRow>
-              )}
-            </tbody>
-          </table>
-        </div>
+                <AdminP>No bookings available at the moment.</AdminP>
+            )}
+            </div>
+        </section>
       );
-      
 };
+
 
 export default AdminBookings;

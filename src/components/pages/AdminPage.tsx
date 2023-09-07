@@ -64,9 +64,8 @@ export const AdminPage: React.FC = () => {
 
   return (
     <AdminContainer>
-      <h2>Manage bookings</h2>
       <AddBookingContainer>
-        {/* ... (your existing AddBookingContainer setup) */}
+        {/* AddBookingContainer setup */}
       </AddBookingContainer>
       <div style={{ display: 'flex', height: '60vh', overflowY: 'auto' }}>
         <AdminBookingsContainer>
