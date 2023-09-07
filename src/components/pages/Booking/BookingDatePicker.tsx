@@ -17,15 +17,15 @@ export const BookingDatePicker = () => {
 	const bookings = useLoaderData() as IBooking[];
 	const [bookingsList] = useReducer(BookingsReducer, bookings);
 
-	const isAvailable = useAvailableTable(startDate, bookingsList);
 	const getAvaliableTables = (e: FormEvent) => {
 		e.preventDefault();
 
 		setIsHidden(false);
 	};
 
+	const isAvailable = useAvailableTable(startDate, bookingsList);
 	// clicking on a time should set the var isBookingTable in Booking.tsx to true.
-	console.log(bookingsList);
+
 	console.log(isAvailable);
 
 	return (
@@ -60,7 +60,15 @@ export const BookingDatePicker = () => {
 			</form>
 
 			<SmallWrapper className={isHidden ? 'hidden' : 'showing'}>
-				<p>Display avaliable times for the date here</p>
+				<div>
+					{isAvailable['18:00'] < 15 ? <button>18:00</button> : null}
+					{isAvailable['21:00'] < 15 ? <button>21:00</button> : null}
+				</div>
+				{isAvailable['18:00'] < 15 || isAvailable['21:00'] < 15 ? (
+					<p>These are our available seatings for the evning</p>
+				) : (
+					<p>Sorry, we are fully booked for the evning</p>
+				)}
 			</SmallWrapper>
 		</CenteredWrapper>
 	);
