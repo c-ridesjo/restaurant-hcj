@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useReducer, useEffect, useState } from 'react';
 import { IBooking } from '../../models/IBookings';
 import { bookingsLoader } from '../../loaders/bookingsLoader';
@@ -20,14 +21,18 @@ export const AdminPage: React.FC = () => {
   useEffect(() => {
     const loadBookings = async () => {
       const data = await bookingsLoader();
+      console.log(data); // to check the structure of data
+  
       dispatch({
         type: ActionType.GOTBOOKINGS,
-        payload: JSON.stringify(data.bookings),
+        payload: JSON.stringify(data),
       });
+      
     };
-
+  
     loadBookings();
   }, []);
+  
 
   const [selectedBooking, setSelectedBooking] = useState<IBooking | null>(null);
 

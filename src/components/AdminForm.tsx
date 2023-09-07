@@ -33,11 +33,17 @@ export const AdminForm: React.FC<AdminFormProps> = ({ booking }) => {
       ) : (
         <div>No booking selected</div>
       )}
-      <button onClick={() => { /* Your save changes handler here */ }}>
-        Save Changes
-      </button>
+        <button onClick={handleSaveChanges}>Save Changes</button>
+     
     </div>
   );
 };
+
+const handleSaveChanges = () => {
+	if (booking) {
+		// logik
+	}
+};
+
 
 export default AdminForm;
