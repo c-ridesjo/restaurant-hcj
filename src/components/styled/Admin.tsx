@@ -12,10 +12,12 @@ export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  border: 1px solid black; 
 `;
 
 export const TableHead = styled.thead`
   background-color: #f0f0f0;
+  border-bottom: 1px solid black; 
 `;
 
 export const TableRow = styled.tr`
@@ -24,18 +26,8 @@ export const TableRow = styled.tr`
 
 export const TableData = styled.td`
   padding: 10px;
-`;
-
-export const ActionButton = styled.button`
-  padding: 5px 10px;
-  margin: 0 5px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  
-  &:hover {
-    opacity: 0.8;
-  }
+  border: 1px solid black; 
+  background-color: lightyellow; 
 `;
 
 export const Input = styled.input`
@@ -45,16 +37,37 @@ export const Input = styled.input`
   border-radius: 4px;
 `;
 
-export const AddButton = styled.button`
-  padding: 5px 10px;
+export const AdminBookingsContainer = styled.div`
+  overflow-y: auto;
+  width: 50%;
+  border-right: 1px solid #ccc; 
+`;
+
+export const AdminFormContainer = styled.div`
+  width: 50%;
+  padding: 20px; 
+  border: 1px solid red; 
+  background-color: lightyellow; 
+`;
+
+export const AdminFormTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black; 
+`;
+
+export const SaveButton = styled.button`
+  padding: 10px 15px;
+  margin-top: 20px;
+  background-color: green;
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  background-color: green;
-  color: #fff;
-  
+  transition: 0.3s;
+  justify-content: center;
+
   &:hover {
     background-color: darkgreen;
   }
 `;
-
