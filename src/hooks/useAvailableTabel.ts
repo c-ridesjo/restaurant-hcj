@@ -1,29 +1,34 @@
+import { useEffect, useState } from 'react';
 import { IBooking } from '../models/IBookings';
 
-export interface IAvailableTable {
-	seatingOne: string;
-	seatingTwo: string;
+interface ISeating {
+	'18:00': number;
+	'21:00': number;
 }
 
-export const useAvailableTable = (
-	date: Date,
-	bookings: IBooking[]
-): IAvailableTable => {
-	const availableTable: IAvailableTable = {
-		seatingOne: '18:00',
-		seatingTwo: '21:00',
-	};
-
-	bookings.forEach((booking) => {
-		const bookingDate = new Date(booking.date);
-		if (date != bookingDate) {
-			return availableTable;
-		} else if (
-			date === bookingDate &&
-			booking.time === availableTable.seatingOne
-		) {
-			return availableTable.seatingTwo;
-		} else return availableTable.seatingOne;
+export function useAvailableTable(date: Date, bookings: IBooking[]) {
+	const [numberOfBookings, setNumberOfBookings] = useState<ISeating>({
+		'18:00': 0,
+		'21:00': 0,
 	});
-	return availableTable;
-};
+
+	useEffect(() => {
+		const filterBookings = bookings.filter(
+			(booking) => new Date(booking.date).toDateString() === date.toDateString()
+		);
+		if (filterBookings) {
+			const countBookings = filterBookings.reduce(
+				(acc, booking) => {
+					const { time } = booking;
+					if (time === '18:00' || time === '21:00') {
+						acc[time]++;
+					}
+					return acc;
+				},
+				{ '18:00': 0, '21:00': 0 }
+			);
+			setNumberOfBookings(countBookings);
+		}
+	}, [bookings, date]);
+	return numberOfBookings;
+}
