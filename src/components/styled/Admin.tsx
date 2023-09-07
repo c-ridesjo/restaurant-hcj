@@ -27,7 +27,7 @@ export const TableRow = styled.tr`
 export const TableData = styled.td`
   padding: 10px;
   border: 1px solid black; 
-  background-color: lightyellow; 
+  background-color: #dbf3ee;
 `;
 
 export const Input = styled.input`
@@ -46,8 +46,9 @@ export const AdminBookingsContainer = styled.div`
 export const AdminFormContainer = styled.div`
   width: 50%;
   padding: 20px; 
-  border: 1px solid red; 
-  background-color: lightyellow; 
+  border: 1px solid black; 
+  background-color: #dbf3ee;
+  position: relative;
 `;
 
 export const AdminFormTable = styled.table`
@@ -58,16 +59,19 @@ export const AdminFormTable = styled.table`
 
 export const SaveButton = styled.button`
   padding: 10px 15px;
-  margin-top: 20px;
+  bottom: 10px;
   background-color: green;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: 0.3s;
+  position: absolute;
+  text-align: center;
   justify-content: center;
 
   &:hover {
     background-color: darkgreen;
   }
 `;
+

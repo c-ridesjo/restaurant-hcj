@@ -9,7 +9,7 @@ interface AdminBookingsProps {
 
 export const AdminBookings: React.FC<AdminBookingsProps> = ({ bookings, onSelect }) => {
     return (
-        <div style={{ overflowY: 'auto', width: '50%' }}>
+        <div style={{ overflowY: 'auto', width: '60%' }}>
           <table>
             <thead>
               <tr>
