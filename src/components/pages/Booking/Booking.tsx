@@ -1,12 +1,14 @@
+import { useState } from 'react';
 import { BookingDatePicker } from './BookingDatePicker';
 import { BookingForm } from './BookingForm';
-import '../../styles/Booking.scss';
 
 export const Booking = () => {
-	const isBookingTable = false;
+	const [hasChosenTime, setHasChosenTime] = useState(false);
 
-	if (!isBookingTable) {
-		return <BookingDatePicker />;
+	if (!hasChosenTime) {
+		return <BookingDatePicker
+			setHasChosenTime={setHasChosenTime}
+		/>;
 	} else {
 		return <BookingForm />;
 	}
