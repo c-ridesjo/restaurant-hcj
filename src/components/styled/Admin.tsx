@@ -72,7 +72,7 @@ export const AdminFormTable = styled.table`
 export const SaveButton = styled.button`
   padding: 10px 15px;
   bottom: 10px;
-  background-color: #98afba;
+  background-color:#3a8f81;
   color: white;
   border: none;
   border-radius: 4px;
@@ -85,7 +85,7 @@ export const SaveButton = styled.button`
   justify-content: center;
 
   &:hover {
-    background-color: #3a8f81;
+    background-color: #98afba;
   }
 `;
 
@@ -128,11 +128,27 @@ export const StyledInput = styled.input`
   margin: 0 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%; 
+  width: 90%; 
 `;
 
 export const Label = styled.label`
   display: block;
   margin-bottom: 5px;
+  margin-left: 1rem;
+  font-size: 1rem;
   font-weight: bold;
+  text-align: left;
+`;
+
+export const InputContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const LeftInputs = styled.div`
+  width: 45%;
+`;
+
+export const RightInputs = styled.div`
+  width: 45%;
 `;

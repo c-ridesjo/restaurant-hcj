@@ -21,7 +21,7 @@ export const AdminBookings: React.FC<AdminBookingsProps> = ({ bookings, onSelect
         {bookings.length > 0 ? (
           bookings.map((booking) => (
             <BookingBox key={booking._id} onClick={() => onSelect(booking)}>
-              <p><strong>Customer ID:  </strong> {booking.customerId}</p>
+              <p><strong>Booking ID:  </strong> {booking._id}</p>
               <p><strong>Date:  </strong> {new Date(booking.date).toLocaleDateString()}</p>
               <p><strong>Time:  </strong> {booking.time}</p>
               <p><strong>Number of guests:  </strong>{booking.numberOfGuests}</p>
