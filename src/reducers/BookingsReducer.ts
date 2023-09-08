@@ -13,13 +13,36 @@ export enum ActionType {
 }
 
 export const BookingsReducer = (
-	state: IBooking[],
+	bookings: IBooking[],
 	action: IAction
 ): IBooking[] => {
 	switch (action.type) {
-		case ActionType.GOTBOOKINGS:
+		case ActionType.GOTBOOKINGS: {
 			return JSON.parse(action.payload);
+		}
+		case ActionType.ADDED: {
+			return [...bookings, JSON.parse(action.payload)];
+		}
+		case ActionType.DELETED: {
+			return bookings.filter((booking) => booking.id !== action.payload);
+		}
+		case ActionType.UPDATED: {
+			const parsedBooking: IBooking = JSON.parse(action.payload);
+			return bookings.map((booking) => {
+				if (booking.id === parsedBooking.id) {
+					return {
+						id: parsedBooking.id,
+						restaurantId: parsedBooking.restaurantId,
+						date: parsedBooking.date,
+						time: parsedBooking.time,
+						numberOfGuests: parsedBooking.numberOfGuests,
+						customerId: parsedBooking.customerId,
+					}
+				}
+				return booking;
+			})
+		}
 		default:
-			return state;
+			return bookings;
 	}
 };
