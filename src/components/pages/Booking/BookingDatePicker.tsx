@@ -62,7 +62,7 @@ export const BookingDatePicker = (props: IBookingDatePickerProps) => {
           }}>21:00</button> : null}
         </div>
         {isAvailable['18:00'] < 15 || isAvailable['21:00'] < 15 ? (
-          <p>These are our available seatings for the evning</p>
+          <p>These are our available seatings for the evening</p>
         ) : (
           <p>Sorry, we are fully booked for the evening</p>
         )}
