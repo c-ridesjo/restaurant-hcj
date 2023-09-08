@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useReducer, useEffect, useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import { IBooking } from '../../../models/IBookings';
-import { bookingsLoader } from '../../../loaders/bookingsLoader';
 import { ActionType, BookingsReducer } from '../../../reducers/BookingsReducer';
 import AdminBookings from './AdminBookings';
-import AdminForm from './AdminForm';
+import { AdminForm } from './AdminForm';
 
 import {
   AdminContainer,
@@ -14,7 +13,6 @@ import {
   
 } from '../../styled/Admin';
 import { useLoaderData } from 'react-router-dom';
-import { log } from 'console';
 
 export const AdminPage: React.FC = () => {
   const bookings = useLoaderData() as IBooking[];
@@ -48,15 +46,22 @@ export const AdminPage: React.FC = () => {
     }
   };
 
-  const handleUpdateBooking = (id: string) => {
-    const updatedBooking = bookingsList.find((booking) => booking.id === id);
+  const handleUpdateBooking = (id: string, updates: Partial<IBooking>) => {
+    console.log('Handling Update', { id, updates });
+    const updatedBooking = bookingsList.find((booking) => booking._id === id);
     if (updatedBooking) {
+      const newBookingData = { ...updatedBooking, ...updates };
+      console.log('New Booking Data', newBookingData);
       dispatch({
         type: ActionType.UPDATED,
-        payload: JSON.stringify(updatedBooking),
+        payload: JSON.stringify(newBookingData),
       });
     }
   };
+  
+  
+  
+  
 
   const handleDeleteBooking = (id: string) => {
     dispatch({
@@ -78,7 +83,7 @@ export const AdminPage: React.FC = () => {
           <AdminBookings bookings={bookingsList} onSelect={setSelectedBooking} />
         </AdminBookingsContainer>
         <AdminFormContainer>
-          <AdminForm booking={selectedBooking} />
+          <AdminForm booking={selectedBooking} onUpdate={handleUpdateBooking} />
         </AdminFormContainer>
       </div>
     </AdminContainer>

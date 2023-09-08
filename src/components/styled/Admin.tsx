@@ -45,6 +45,7 @@ export const AdminBookingsContainer = styled.div`
   background-color: #dbf3ee;
   border-radius: 4px;
   margin-left: 5rem;
+  padding: 2rem;
 `;
 
 export const AdminFormContainer = styled.div`
@@ -120,4 +121,18 @@ export const BookingBox = styled.article`
   p {
     margin: 5px 0;
   }
+`;
+
+export const StyledInput = styled.input`
+  padding: 5px;
+  margin: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; 
+`;
+
+export const Label = styled.label`
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 `;

@@ -24,14 +24,14 @@ export const BookingsReducer = (
 			return [...bookings, JSON.parse(action.payload)];
 		}
 		case ActionType.DELETED: {
-			return bookings.filter((booking) => booking.id !== action.payload);
+			return bookings.filter((booking) => booking._id !== action.payload);
 		}
 		case ActionType.UPDATED: {
 			const parsedBooking: IBooking = JSON.parse(action.payload);
 			return bookings.map((booking) => {
-				if (booking.id === parsedBooking.id) {
+				if (booking._id === parsedBooking._id) {
 					return {
-						id: parsedBooking.id,
+						_id: parsedBooking._id,
 						restaurantId: parsedBooking.restaurantId,
 						date: parsedBooking.date,
 						time: parsedBooking.time,
