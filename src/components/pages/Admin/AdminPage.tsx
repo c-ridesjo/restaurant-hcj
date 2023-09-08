@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useReducer, useEffect, useState } from 'react';
-import { IBooking } from '../../models/IBookings';
-import { bookingsLoader } from '../../loaders/bookingsLoader';
-import { ActionType, BookingsReducer } from '../../reducers/BookingsReducer';
-import AdminBookings from '../AdminBookings';
-import AdminForm from '../AdminForm';
+import { IBooking } from '../../../models/IBookings';
+import { bookingsLoader } from '../../../loaders/bookingsLoader';
+import { ActionType, BookingsReducer } from '../../../reducers/BookingsReducer';
+import AdminBookings from './AdminBookings';
+import AdminForm from './AdminForm';
 
 import {
   AdminContainer,
@@ -12,7 +12,7 @@ import {
   AdminBookingsContainer,
   AdminFormContainer,
   
-} from '../styled/Admin';
+} from '../../styled/Admin';
 import { useLoaderData } from 'react-router-dom';
 import { log } from 'console';
 
@@ -65,7 +65,7 @@ export const AdminPage: React.FC = () => {
     });
   };
 
-  console.log(bookings);
+  console.log(bookingsList);
   
 
   return (

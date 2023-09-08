@@ -1,7 +1,7 @@
 import React from 'react';
-import { IBooking } from '../models/IBookings';
-import { H2 } from './styled/Headings';
-import { AdminP } from './styled/Admin';
+import { IBooking } from '../../../models/IBookings';
+import { H2 } from '../../styled/Headings';
+import { AdminP } from '../../styled/Admin';
 
 interface AdminBookingsProps {
   bookings: IBooking[];
@@ -11,7 +11,6 @@ interface AdminBookingsProps {
 export const AdminBookings: React.FC<AdminBookingsProps> = ({ bookings, onSelect }) => {
     return (
         <section>
-          {JSON.stringify(bookings)}
           <H2>Bookings</H2>
             <div>
               {bookings.length > 0 ? (

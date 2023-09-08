@@ -1,6 +1,6 @@
 import React from 'react';
-import { IBooking } from '../models/IBookings';
-import { TableData, SaveButton, AdminP } from '../components/styled/Admin';
+import { IBooking } from '../../../models/IBookings';
+import { TableData, SaveButton, AdminP } from '../../styled/Admin';
 
 interface AdminFormProps {
   booking: IBooking | null;
