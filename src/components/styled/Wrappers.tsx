@@ -47,4 +47,5 @@ export const FooterWrapper = styled.footer`
   text-align: left;
   padding: 0.6rem;
   font-size: 1rem;
+  height: 5rem;
 `;

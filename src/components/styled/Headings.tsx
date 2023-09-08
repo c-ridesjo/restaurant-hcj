@@ -1,4 +1,5 @@
-import styled from "styled-components";
+/* eslint-disable react-refresh/only-export-components */
+import styled from 'styled-components';
 
 export const H1 = styled.h1`
   font-family: 'Roboto', sans-serif;
@@ -7,5 +8,13 @@ export const H1 = styled.h1`
   text-align: center;
   padding: 1.25rem;
   margin: auto;
+`;
+
+export const H2 = styled.h2`
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  color: black;
+  text-align: center;
+  margin-top: 20px;
 `;
 
