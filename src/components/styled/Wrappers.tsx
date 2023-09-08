@@ -30,6 +30,8 @@ export const SmallWrapper = styled.div`
   background-color: #f0f4f6;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
   border-radius: 0.6rem;
+  padding: 1rem;
+  margin: 1rem;
 `;
 
 export const HeaderWrapper = styled.header`
