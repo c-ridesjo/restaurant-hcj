@@ -39,7 +39,7 @@ export const Input = styled.input`
 
 export const AdminBookingsContainer = styled.div`
   overflow-y: auto;
-  width: 30%;
+  width: 40%;
   border-right: 1px solid #ccc; 
   border: 1px solid black; 
   background-color: #dbf3ee;
@@ -101,4 +101,23 @@ export const AdminP = styled.p`
   margin-top: 20px;
   display: block;
   margin: 0 auto;
+`;
+
+export const BookingBox = styled.article`
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  p {
+    margin: 5px 0;
+  }
 `;
