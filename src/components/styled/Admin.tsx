@@ -44,6 +44,7 @@ export const AdminBookingsContainer = styled.div`
   border: 1px solid black; 
   background-color: #dbf3ee;
   border-radius: 4px;
+  margin-left: 5rem;
 `;
 
 export const AdminFormContainer = styled.div`
@@ -53,7 +54,7 @@ export const AdminFormContainer = styled.div`
   justify-content: center;
   width: 50%;
   padding: 20px; 
-  margin-left: 10rem;
+  margin-left: 5rem;
   border: 1px solid black; 
   background-color: #dbf3ee;
   position: relative;
