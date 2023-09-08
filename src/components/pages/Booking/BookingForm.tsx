@@ -1,5 +1,7 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import type { FieldValues } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
+import { BookingSchema, bookingSchema } from '../../../schemas/bookingSchema';
 
 export const BookingForm = () => {
 	const {
@@ -7,8 +9,9 @@ export const BookingForm = () => {
 		handleSubmit,
 		formState: { errors, isSubmitting },
 		reset,
-		getValues,
-	} = useForm();
+	} = useForm<BookingSchema>({
+		resolver: zodResolver(bookingSchema),
+	});
 
 	const onSubmit = (data: FieldValues) => {
 		reset();
@@ -17,40 +20,14 @@ export const BookingForm = () => {
 	return (
 		<>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<input
-					{...register('firstname', {
-						required: 'Firstname is required',
-						minLength: {
-							value: 2,
-							message: 'Firstname has to be 2 characters long',
-						},
-					})}
-					type='text'
-					placeholder='Firstname'
-				/>
-				<input
-					{...register('lastname', {
-						required: 'Lastname is required',
-						minLength: {
-							value: 2,
-							message: 'Lastname has to be 2 characters long',
-						},
-					})}
-					type='text'
-					placeholder='Lastname'
-				/>
-				<input
-					{...register('email', { required: 'Email is required' })}
-					type='email'
-					placeholder='Email'
-				/>
-				<input
-					{...register('phone', {
-						required: 'You need to provide a phone number',
-					})}
-					type='tel'
-					placeholder='Phone number'
-				/>
+				<input {...register('firstName')} type='text' placeholder='Firstname' />
+				{errors.firstName && <p>{`${errors.firstName.message}`}</p>}
+				<input {...register('lastName')} type='text' placeholder='Lastname' />
+				{errors.lastName && <p>{`${errors.lastName.message}`}</p>}
+				<input {...register('email')} type='email' placeholder='Email' />
+				{errors.email && <p>{`${errors.email.message}`}</p>}
+				<input {...register('phone')} type='tel' placeholder='Phone number' />
+				{errors.phone && <p>{`${errors.phone.message}`}</p>}
 				<button type='submit' disabled={isSubmitting}>
 					Book table
 				</button>
