@@ -34,6 +34,15 @@ export const SmallWrapper = styled.div`
   margin: 1rem;
 `;
 
+export const ListWrapper = styled.ul`
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  font-size: 1.5rem;
+  gap: 10px;
+  margin-right: 40px;
+`;
+
 export const HeaderWrapper = styled.header`
   font-family: 'Roboto Slab', serif;
   background-color: #dbf3ee;
