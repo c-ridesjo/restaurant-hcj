@@ -27,6 +27,7 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: '/admin',
+				loader: bookingsLoader,
 				element: <AdminPage />,
 				index: true,
 			},

@@ -11,6 +11,7 @@ interface AdminBookingsProps {
 export const AdminBookings: React.FC<AdminBookingsProps> = ({ bookings, onSelect }) => {
     return (
         <section>
+          {JSON.stringify(bookings)}
           <H2>Bookings</H2>
             <div>
               {bookings.length > 0 ? (

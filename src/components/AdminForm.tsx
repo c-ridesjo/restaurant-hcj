@@ -40,9 +40,9 @@ export const AdminForm: React.FC<AdminFormProps> = ({ booking }) => {
 };
 
 const handleSaveChanges = () => {
-	if (booking) {
+/* 	if (booking) {
 		// logik
-	}
+	} */
 };
 
 

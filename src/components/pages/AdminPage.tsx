@@ -13,25 +13,28 @@ import {
   AdminFormContainer,
   
 } from '../styled/Admin';
+import { useLoaderData } from 'react-router-dom';
+import { log } from 'console';
 
 export const AdminPage: React.FC = () => {
-  const [state, dispatch] = useReducer(BookingsReducer, []);
+  const bookings = useLoaderData() as IBooking[];
+  const [bookingsList, dispatch] = useReducer(BookingsReducer, bookings);
   const [newBooking, setNewBooking] = useState<Partial<IBooking>>({});
 
-  useEffect(() => {
-    const loadBookings = async () => {
-      const data = await bookingsLoader();
-      console.log(data); // to check the structure of data
+  // useEffect(() => {
+  //   const loadBookings = async () => {
+  //     const data = await bookingsLoader();
+  //     console.log(data); // to check the structure of data
   
-      dispatch({
-        type: ActionType.GOTBOOKINGS,
-        payload: JSON.stringify(data),
-      });
+  //     dispatch({
+  //       type: ActionType.GOTBOOKINGS,
+  //       payload: JSON.stringify(data),
+  //     });
       
-    };
+  //   };
   
-    loadBookings();
-  }, []);
+  //   loadBookings();
+  // }, []);
   
 
   const [selectedBooking, setSelectedBooking] = useState<IBooking | null>(null);
@@ -46,7 +49,7 @@ export const AdminPage: React.FC = () => {
   };
 
   const handleUpdateBooking = (id: string) => {
-    const updatedBooking = state.find((booking) => booking.id === id);
+    const updatedBooking = bookingsList.find((booking) => booking.id === id);
     if (updatedBooking) {
       dispatch({
         type: ActionType.UPDATED,
@@ -62,6 +65,9 @@ export const AdminPage: React.FC = () => {
     });
   };
 
+  console.log(bookings);
+  
+
   return (
     <AdminContainer>
       <AddBookingContainer>
@@ -69,7 +75,7 @@ export const AdminPage: React.FC = () => {
       </AddBookingContainer>
       <div style={{ display: 'flex', height: '60vh', overflowY: 'auto' }}>
         <AdminBookingsContainer>
-          <AdminBookings bookings={state} onSelect={setSelectedBooking} />
+          <AdminBookings bookings={bookingsList} onSelect={setSelectedBooking} />
         </AdminBookingsContainer>
         <AdminFormContainer>
           <AdminForm booking={selectedBooking} />
