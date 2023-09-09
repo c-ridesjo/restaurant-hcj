@@ -8,6 +8,7 @@ interface AdminFormProps {
   onUpdate: (id: string, updates: Partial<IBooking>) => void;
 }
 
+
 export const AdminForm: React.FC<AdminFormProps> = ({ booking, onUpdate }) => {
   const [formData, setFormData] = React.useState<IBooking | null>(booking);
   const [customerData, setCustomerData] = React.useState<ICustomer | null>(null);
@@ -17,6 +18,9 @@ export const AdminForm: React.FC<AdminFormProps> = ({ booking, onUpdate }) => {
 
     if (booking && booking.customerId) {
       getCustomer(booking.customerId).then(setCustomerData);
+    } else {
+      setCustomerData(null);
+      //setFormData(null);
     }
   }, [booking]);
 
@@ -32,9 +36,12 @@ export const AdminForm: React.FC<AdminFormProps> = ({ booking, onUpdate }) => {
     console.log('handleSaveChanges is called');
     if (formData && formData._id) {
       onUpdate(formData._id, formData);
+      setFormData(null);
+      setCustomerData(null);
     }
   };
   
+
   return (
     <div style={{ width: '100%' }}>
       {formData ? (
@@ -76,8 +83,9 @@ export const AdminForm: React.FC<AdminFormProps> = ({ booking, onUpdate }) => {
               />
             </div>
           </LeftInputs>
-          
+          {formData && customerData && (
           <RightInputs>
+            
   <div>
     <Label>First name</Label>
     <StyledInput 
@@ -115,13 +123,15 @@ export const AdminForm: React.FC<AdminFormProps> = ({ booking, onUpdate }) => {
     />
   </div>
 </RightInputs>
-
+)}
         </InputContainer>
       ) : (
         <AdminP>No booking selected</AdminP>
       )}
+
       <SaveButton onClick={handleSaveChanges}>Save Changes</SaveButton>
     </div>
   );
+
   
 };

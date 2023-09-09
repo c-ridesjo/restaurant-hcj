@@ -59,20 +59,14 @@ export const AdminPage: React.FC = () => {
     }
   };
   
-  
-  
-  
-
   const handleDeleteBooking = (id: string) => {
     dispatch({
       type: ActionType.DELETED,
       payload: id,
     });
+    setSelectedBooking(null); 
   };
-
-  console.log(bookingsList);
   
-
   return (
     <AdminContainer>
       <AddBookingContainer>
@@ -80,7 +74,7 @@ export const AdminPage: React.FC = () => {
       </AddBookingContainer>
       <div style={{ display: 'flex', height: '60vh', overflowY: 'auto' }}>
         <AdminBookingsContainer>
-          <AdminBookings bookings={bookingsList} onSelect={setSelectedBooking} />
+          <AdminBookings bookings={bookingsList} onSelect={setSelectedBooking} onDelete={handleDeleteBooking} />
         </AdminBookingsContainer>
         <AdminFormContainer>
           <AdminForm booking={selectedBooking} onUpdate={handleUpdateBooking} />

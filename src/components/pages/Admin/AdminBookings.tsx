@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { IBooking } from '../../../models/IBookings';
 import { H2 } from '../../styled/Headings';
-import { AdminP, BookingBox } from '../../styled/Admin';
+import { AdminP, BookingBox, DeleteButton } from '../../styled/Admin';
 
 interface AdminBookingsProps {
   bookings: IBooking[];
   onSelect: (booking: IBooking) => void;
+  onDelete: (id: string) => void;
 }
 
-export const AdminBookings: React.FC<AdminBookingsProps> = ({ bookings, onSelect }) => {
+export const AdminBookings: React.FC<AdminBookingsProps> = ({ bookings, onSelect, onDelete  }) => {
 
   useEffect(() => {
     console.log('Updated Bookings List:', bookings);
@@ -25,6 +26,7 @@ export const AdminBookings: React.FC<AdminBookingsProps> = ({ bookings, onSelect
               <p><strong>Date:  </strong> {new Date(booking.date).toLocaleDateString()}</p>
               <p><strong>Time:  </strong> {booking.time}</p>
               <p><strong>Number of guests:  </strong>{booking.numberOfGuests}</p>
+              <DeleteButton onClick={() => onDelete(booking._id)}>Delete</DeleteButton>
             </BookingBox>
           ))
         ) : (

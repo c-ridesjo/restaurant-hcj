@@ -152,3 +152,20 @@ export const LeftInputs = styled.div`
 export const RightInputs = styled.div`
   width: 45%;
 `;
+
+export const DeleteButton = styled.button`
+  padding: 10px 15px;
+  margin-left: 2rem;
+  background-color:#3a8f81;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+  transform: translateX(-50%);
+  text-align: center;
+
+  &:hover {
+    background-color: #98afba;
+  }
+`;
