@@ -53,26 +53,50 @@ export const AdminPage: React.FC = () => {
   const handleNewBookingChange = (updates: Partial<IBooking>) => {
     setNewBooking((prev) => ({ ...prev, ...updates }));
   };
+
+  const [isAddingNewBooking, setIsAddingNewBooking] = useState(false);
+
+  const handleAddNewBookingClick = () => {
+    setIsAddingNewBooking(true);
+  };
+
+  const handleSaveNewBooking = () => {
+    handleAddBooking();
+    setIsAddingNewBooking(false);
+  };
   
   return (
     <AdminContainer>
-      <AddBookingContainer>
-        <NewBookingForm 
-          newBooking={newBooking} 
-          onChange={handleNewBookingChange} 
-          onAddNewBooking={handleAddBooking} 
-        />
-      </AddBookingContainer>
       <div style={{ display: 'flex', height: '60vh', overflowY: 'auto' }}>
         <AdminBookingsContainer>
-          <AdminBookings bookings={bookingsList} onSelect={setSelectedBooking} onDelete={handleDeleteBooking} onAddNew={handleAddBooking}/>
+          <AdminBookings 
+            bookings={bookingsList} 
+            onSelect={setSelectedBooking} 
+            onDelete={handleDeleteBooking} 
+            onAddNew={handleAddNewBookingClick}
+          />
         </AdminBookingsContainer>
-        <AdminFormContainer>
-          <AdminForm booking={selectedBooking} onUpdate={handleUpdateBooking} />
-        </AdminFormContainer>
+  
+        {isAddingNewBooking ? (
+          <AddBookingContainer>
+            <NewBookingForm 
+              newBooking={newBooking} 
+              onChange={handleNewBookingChange} 
+              onAddNewBooking={handleSaveNewBooking} 
+            />
+          </AddBookingContainer>
+        ) : (
+          <AdminFormContainer>
+            <AdminForm booking={selectedBooking} onUpdate={handleUpdateBooking} />
+          </AdminFormContainer>
+        )}
       </div>
     </AdminContainer>
   );
+  
+  
+  
+  
 };
 
 export default AdminPage;

@@ -5,7 +5,17 @@ export const AdminContainer = styled.div`
 `;
 
 export const AddBookingContainer = styled.div`
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  padding: 20px; 
+  margin-left: 5rem;
+  border: 1px solid black; 
+  background-color: #dbf3ee;
+  position: relative;
+  border-radius: 4px;
 `;
 
 export const Table = styled.table`
@@ -99,9 +109,8 @@ export const AdminP = styled.p`
   font-size: 1rem;
   color: black;
   text-align: center;
-  margin-top: 20px;
+  margin-top: -6rem;
   display: block;
-  margin: 0 auto;
 `;
 
 export const BookingBox = styled.article`
@@ -142,7 +151,8 @@ export const Label = styled.label`
 
 export const InputContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  margin-bottom: 7rem;
 `;
 
 export const LeftInputs = styled.div`
@@ -184,3 +194,4 @@ export const AddButton = styled.button`
     background-color: #98afba;
   }
 `;
+

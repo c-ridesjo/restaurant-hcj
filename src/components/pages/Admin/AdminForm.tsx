@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { IBooking } from '../../../models/IBookings';
 import { StyledInput, SaveButton, AdminP, Label, InputContainer, LeftInputs, RightInputs } from '../../styled/Admin'; 
 import { ICustomer, getCustomer } from '../../../services/RestaurantService';
+import { H3 } from '../../styled/Headings';
 
 interface AdminFormProps {
   booking: IBooking | null;
@@ -44,7 +45,9 @@ export const AdminForm: React.FC<AdminFormProps> = ({ booking, onUpdate }) => {
 
   return (
     <div style={{ width: '100%' }}>
+      <H3>Booking information</H3>
       {formData ? (
+        
         <InputContainer>
           <LeftInputs>
             <div>
@@ -129,7 +132,10 @@ export const AdminForm: React.FC<AdminFormProps> = ({ booking, onUpdate }) => {
         <AdminP>No booking selected</AdminP>
       )}
 
-      <SaveButton onClick={handleSaveChanges}>Save Changes</SaveButton>
+{formData && (
+  <SaveButton onClick={handleSaveChanges}>Save Changes</SaveButton>
+)}
+
     </div>
   );
 

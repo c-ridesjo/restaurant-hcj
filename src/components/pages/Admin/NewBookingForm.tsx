@@ -1,6 +1,7 @@
 import React from 'react';
 import { IBooking } from '../../../models/IBookings';
 import { StyledInput, SaveButton, Label, InputContainer, LeftInputs, RightInputs } from '../../styled/Admin';
+import { H3 } from '../../styled/Headings';
 
 interface NewBookingFormProps {
   newBooking: Partial<IBooking>;
@@ -19,6 +20,8 @@ export const NewBookingForm: React.FC<NewBookingFormProps> = ({ newBooking, onCh
   };
 
   return (
+    <div style={{ width: '100%' }}>
+        <H3>New booking</H3>
     <InputContainer>
       <LeftInputs>
         <div>
@@ -90,6 +93,7 @@ export const NewBookingForm: React.FC<NewBookingFormProps> = ({ newBooking, onCh
 </RightInputs>
       <SaveButton onClick={handleSaveNewBooking}>Save New Booking</SaveButton>
     </InputContainer>
+    </div>
   );
 };
 
