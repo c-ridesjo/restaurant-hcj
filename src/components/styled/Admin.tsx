@@ -169,3 +169,18 @@ export const DeleteButton = styled.button`
     background-color: #98afba;
   }
 `;
+
+export const AddButton = styled.button`
+  padding: 10px 15px;
+  margin-bottom: 1rem;
+  background-color: #3a8f81;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #98afba;
+  }
+`;

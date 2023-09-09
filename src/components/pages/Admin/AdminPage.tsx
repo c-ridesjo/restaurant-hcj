@@ -74,7 +74,7 @@ export const AdminPage: React.FC = () => {
       </AddBookingContainer>
       <div style={{ display: 'flex', height: '60vh', overflowY: 'auto' }}>
         <AdminBookingsContainer>
-          <AdminBookings bookings={bookingsList} onSelect={setSelectedBooking} onDelete={handleDeleteBooking} />
+          <AdminBookings bookings={bookingsList} onSelect={setSelectedBooking} onDelete={handleDeleteBooking} onAddNew={handleAddBooking}/>
         </AdminBookingsContainer>
         <AdminFormContainer>
           <AdminForm booking={selectedBooking} onUpdate={handleUpdateBooking} />
