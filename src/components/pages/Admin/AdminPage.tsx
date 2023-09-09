@@ -1,18 +1,17 @@
-import React, { useReducer, useState } from 'react';
-import { IBooking } from '../../../models/IBookings';
-import { ActionType, BookingsReducer } from '../../../reducers/BookingsReducer';
-import AdminBookings from './AdminBookings';
-import { AdminForm } from './AdminForm';
-import NewBookingForm from '../Admin/NewBookingForm';
+import React, { useReducer, useState } from "react";
+import { IBooking } from "../../../models/IBookings";
+import { ActionType, BookingsReducer } from "../../../reducers/BookingsReducer";
+import AdminBookings from "./AdminBookings";
+import { AdminForm } from "./AdminForm";
+import NewBookingForm from "../Admin/NewBookingForm";
 
 import {
   AdminContainer,
   AddBookingContainer,
   AdminBookingsContainer,
   AdminFormContainer,
-  
-} from '../../styled/Admin';
-import { useLoaderData } from 'react-router-dom';
+} from "../../styled/Admin";
+import { useLoaderData } from "react-router-dom";
 
 export const AdminPage: React.FC = () => {
   const bookings = useLoaderData() as IBooking[];
@@ -27,7 +26,7 @@ export const AdminPage: React.FC = () => {
         type: ActionType.ADDED,
         payload: JSON.stringify(newBooking),
       });
-      setNewBooking({}); // Reset the newBooking state after adding
+      setNewBooking({});
     }
   };
 
@@ -41,13 +40,13 @@ export const AdminPage: React.FC = () => {
       });
     }
   };
-  
+
   const handleDeleteBooking = (id: string) => {
     dispatch({
       type: ActionType.DELETED,
       payload: id,
     });
-    setSelectedBooking(null); 
+    setSelectedBooking(null);
   };
 
   const handleNewBookingChange = (updates: Partial<IBooking>) => {
@@ -64,39 +63,38 @@ export const AdminPage: React.FC = () => {
     handleAddBooking();
     setIsAddingNewBooking(false);
   };
-  
+
   return (
     <AdminContainer>
-      <div style={{ display: 'flex', height: '60vh', overflowY: 'auto' }}>
+      <div style={{ display: "flex", height: "60vh", overflowY: "auto" }}>
         <AdminBookingsContainer>
-          <AdminBookings 
-            bookings={bookingsList} 
-            onSelect={setSelectedBooking} 
-            onDelete={handleDeleteBooking} 
+          <AdminBookings
+            bookings={bookingsList}
+            onSelect={setSelectedBooking}
+            onDelete={handleDeleteBooking}
             onAddNew={handleAddNewBookingClick}
           />
         </AdminBookingsContainer>
-  
+
         {isAddingNewBooking ? (
           <AddBookingContainer>
-            <NewBookingForm 
-              newBooking={newBooking} 
-              onChange={handleNewBookingChange} 
-              onAddNewBooking={handleSaveNewBooking} 
+            <NewBookingForm
+              newBooking={newBooking}
+              onChange={handleNewBookingChange}
+              onAddNewBooking={handleSaveNewBooking}
             />
           </AddBookingContainer>
         ) : (
           <AdminFormContainer>
-            <AdminForm booking={selectedBooking} onUpdate={handleUpdateBooking} />
+            <AdminForm
+              booking={selectedBooking}
+              onUpdate={handleUpdateBooking}
+            />
           </AdminFormContainer>
         )}
       </div>
     </AdminContainer>
   );
-  
-  
-  
-  
 };
 
 export default AdminPage;
