@@ -42,6 +42,7 @@ export const AdminPage: React.FC = () => {
   };
 
   const handleDeleteBooking = (id: string) => {
+    setSelectedBooking(null);
     dispatch({
       type: ActionType.DELETED,
       payload: id,

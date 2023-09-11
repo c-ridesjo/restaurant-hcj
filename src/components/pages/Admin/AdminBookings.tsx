@@ -47,7 +47,12 @@ export const AdminBookings: React.FC<AdminBookingsProps> = ({
                 <strong>Number of guests: </strong>
                 {booking.numberOfGuests}
               </p>
-              <DeleteButton onClick={() => onDelete(booking._id)}>
+              <DeleteButton onClick={(event) => {
+                event.stopPropagation();
+                onDelete(booking._id);
+              }}
+              >
+                
                 Delete
               </DeleteButton>
             </BookingBox>
