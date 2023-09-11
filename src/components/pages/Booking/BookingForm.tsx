@@ -7,6 +7,9 @@ import {
 	createBooking,
 	restaurantId,
 } from '../../../services/RestaurantService';
+import { FormInput } from '../../styled/Inputs';
+import { CenteredWrapper, FormWrapper } from '../../styled/Wrappers';
+import { UserTabelChoices } from './UsersTabelChoices';
 
 interface IBookingFormProps {
 	bookingInfo: {
@@ -28,6 +31,12 @@ export const BookingForm = ({
 	} = useForm<BookingSchema>({
 		resolver: zodResolver(bookingSchema),
 	});
+
+	const userChoices = {
+		guests: numberOfGuests,
+		day: dayOfService,
+		time: serviceTime,
+	};
 
 	const onSubmit = (data: FieldValues) => {
 		const postMsg: ICreateBooking = {
@@ -51,24 +60,34 @@ export const BookingForm = ({
 
 	return (
 		<>
-			<div>
-				<span>Day: {dayOfService}</span>
-				<span>Time: {serviceTime}</span>
-				<span>Number of guests: {numberOfGuests}</span>
-			</div>
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<input {...register('firstName')} type='text' placeholder='Firstname' />
-				{errors.firstName && <p>{`${errors.firstName.message}`}</p>}
-				<input {...register('lastName')} type='text' placeholder='Lastname' />
-				{errors.lastName && <p>{`${errors.lastName.message}`}</p>}
-				<input {...register('email')} type='email' placeholder='Email' />
-				{errors.email && <p>{`${errors.email.message}`}</p>}
-				<input {...register('phone')} type='tel' placeholder='Phone number' />
-				{errors.phone && <p>{`${errors.phone.message}`}</p>}
-				<button type='submit' disabled={isSubmitting}>
-					Book table
-				</button>
-			</form>
+			<CenteredWrapper>
+				<UserTabelChoices userChoices={userChoices} />
+				<FormWrapper onSubmit={handleSubmit(onSubmit)}>
+					<FormInput
+						{...register('firstName')}
+						type='text'
+						placeholder='Firstname'
+					/>
+					{errors.firstName && <p>{`${errors.firstName.message}`}</p>}
+					<FormInput
+						{...register('lastName')}
+						type='text'
+						placeholder='Lastname'
+					/>
+					{errors.lastName && <p>{`${errors.lastName.message}`}</p>}
+					<FormInput {...register('email')} type='email' placeholder='Email' />
+					{errors.email && <p>{`${errors.email.message}`}</p>}
+					<FormInput
+						{...register('phone')}
+						type='tel'
+						placeholder='Phone number'
+					/>
+					{errors.phone && <p>{`${errors.phone.message}`}</p>}
+					<button type='submit' disabled={isSubmitting}>
+						Book table
+					</button>
+				</FormWrapper>
+			</CenteredWrapper>
 		</>
 	);
 };

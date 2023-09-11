@@ -18,7 +18,7 @@ interface ICustomer {
 }
 
 interface IUpdateBooking {
-	id: string;
+	_id: string;
 	restaurantId: string;
 	date: string;
 	time: string;
@@ -52,7 +52,7 @@ export const createBooking = async (postMsg: ICreateBooking) => {
 };
 
 export const updateBooking = async (putMsg: IUpdateBooking) => {
-	return await put(`/booking/update/${putMsg.id}`, putMsg);
+	return await put(`/booking/update/${putMsg._id}`, putMsg);
 };
 
 export const removeBooking = async (bookingId: string) => {
