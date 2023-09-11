@@ -11,7 +11,7 @@ export const Contact = () => {
 		zip: '',
 		city: ''
 	});
-	
+
 	useEffect(() => {
 		const getData = async () => {
 			setRestaurant(await getRestaurant());
@@ -24,9 +24,14 @@ export const Contact = () => {
 			<p><strong>In the mood for some seafood?</strong></p>
 			<p>Come visit us at:</p>
 			<SmallWrapper>
-			<p>{restaurant.address}</p>
-			<p>{restaurant.zip} {restaurant.city}</p>
+				<p>{restaurant.address}</p>
+				<p>{restaurant.zip} {restaurant.city}</p>
 			</SmallWrapper>
+			<p>
+				<i>Can't make your reservation?</i>
+				<br />
+				Please contact the restaurant to cancel.
+			</p>
 		</CenteredWrapper>
 	);
 };
