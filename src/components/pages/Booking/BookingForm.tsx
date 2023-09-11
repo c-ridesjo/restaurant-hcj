@@ -3,6 +3,7 @@ import type { FieldValues } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { BookingSchema, bookingSchema } from '../../../schemas/bookingSchema';
 import {
+	ICreateBooking,
 	createBooking,
 	restaurantId,
 } from '../../../services/RestaurantService';
@@ -29,7 +30,7 @@ export const BookingForm = ({
 	});
 
 	const onSubmit = (data: FieldValues) => {
-		const postMsg = {
+		const postMsg: ICreateBooking = {
 			restaurantId: restaurantId,
 			date: dayOfService,
 			time: serviceTime,

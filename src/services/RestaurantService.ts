@@ -2,7 +2,7 @@ import { IBooking } from '../models/IBookings';
 import { IRestaurant } from '../models/IRestaurant';
 import { get, post, put, remove } from './ServiceBase';
 
-interface ICreateBooking {
+export interface ICreateBooking {
 	restaurantId: string;
 	date: string;
 	time: string;
