@@ -112,6 +112,14 @@ export const AdminP = styled.p`
   display: block;
 `;
 
+export const AdmP = styled.p`
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  color: black;
+  text-align: center;
+  display: block;
+`;
+
 export const BookingBox = styled.article`
   padding: 10px;
   margin-bottom: 10px;

@@ -3,7 +3,7 @@ import { IBooking } from "../../../models/IBookings";
 import { H2 } from "../../styled/Headings";
 import {
   AddButton,
-  AdminP,
+  AdmP,
   BookingBox,
   DeleteButton,
 } from "../../styled/Admin";
@@ -58,7 +58,7 @@ export const AdminBookings: React.FC<AdminBookingsProps> = ({
             </BookingBox>
           ))
         ) : (
-          <AdminP>No bookings available at the moment.</AdminP>
+          <AdmP>No bookings available at the moment.</AdmP>
         )}
       </div>
     </section>
