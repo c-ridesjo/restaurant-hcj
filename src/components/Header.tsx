@@ -4,9 +4,9 @@ import { HeaderWrapper, ListWrapper } from "./styled/Wrappers";
 export const Header = () => {
   const areYouAdmin = () => {
     if (confirm('Are you sure you are admin?')) {
-      location.replace('http://localhost:5173/admin')
+      location.href = '/admin';
     } else {
-      location.replace('http://localhost:5173/')
+      location.href = 'http://localhost:5173/';
     }
   }
 
