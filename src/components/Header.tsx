@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { HeaderWrapper, ListWrapper } from "./styled/Wrappers";
+import { AdminBtn } from "./styled/Buttons";
 
 export const Header = () => {
   const areYouAdmin = () => {
@@ -25,7 +26,7 @@ export const Header = () => {
             <Link to={'/contact'}>Contact</Link>
           </li>
         </ListWrapper>
-        <button onClick={areYouAdmin}>Admin</button>
+        <AdminBtn onClick={areYouAdmin}>Admin</AdminBtn>
       </nav>
     </HeaderWrapper>
   );
