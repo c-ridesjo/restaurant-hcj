@@ -19,10 +19,7 @@ export const AdminNewBooking: React.FC = () => {
 			serviceTime: data.time,
 			showBookingForm: true,
 		})
-		console.log(data);
-		
 	}
-	console.log(bookingInfo.showBookingForm);		
 
 	if (!bookingInfo.showBookingForm) {
 		return <AdminNewBookingInfo onSubmit={onSubmit}></AdminNewBookingInfo>;
@@ -30,5 +27,3 @@ export const AdminNewBooking: React.FC = () => {
 		return <BookingForm bookingInfo={bookingInfo}></BookingForm>;
 	}
 };
-
-

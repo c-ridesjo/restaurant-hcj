@@ -22,7 +22,7 @@ export const AdminBookings: React.FC<AdminBookingsProps> = ({
   onAddNew,
 }) => {
   useEffect(() => {
-    console.log("Updated Bookings List:", bookings);
+    //console.log("Updated Bookings List:", bookings);
   }, [bookings]);
 
   return (
