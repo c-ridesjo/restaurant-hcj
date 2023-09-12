@@ -56,7 +56,7 @@ export const BookingForm = ({
 		reset();
 	};
 
-	console.log(numberOfGuests, dayOfService, serviceTime);
+	//console.log(numberOfGuests, dayOfService, serviceTime);
 
 	return (
 		<>
