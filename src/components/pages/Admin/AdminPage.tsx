@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { IBooking } from "../../../models/IBookings";
 import { ActionType, BookingsReducer } from "../../../reducers/BookingsReducer";
 import AdminBookings from "./AdminBookings";
@@ -12,13 +12,22 @@ import {
 } from "../../styled/Admin";
 import { useLoaderData } from "react-router-dom";
 import { AdminNewBooking } from "./AdminNewBooking";
+import { removeBooking } from "../../../services/RestaurantService";
 
 export const AdminPage: React.FC = () => {
   const bookings = useLoaderData() as IBooking[];
-  const [bookingsList, dispatch] = useReducer(BookingsReducer, bookings);
+  const [bookingsList, dispatch] = useReducer(BookingsReducer, []);
   // const [newBooking, setNewBooking] = useState<Partial<IBooking>>({});
 
   const [selectedBooking, setSelectedBooking] = useState<IBooking | null>(null);
+
+
+  useEffect(() => {
+    dispatch({
+      type: ActionType.GOTBOOKINGS,
+      payload: JSON.stringify(bookings)
+    });
+  }, [bookings]);
 
   // const handleAddBooking = () => {
   //   if (newBooking) {
@@ -41,8 +50,9 @@ export const AdminPage: React.FC = () => {
     }
   };
 
-  const handleDeleteBooking = (id: string) => {
+  const handleDeleteBooking = async (id: string) => {
     setSelectedBooking(null);
+    await removeBooking(id);
     dispatch({
       type: ActionType.DELETED,
       payload: id,
