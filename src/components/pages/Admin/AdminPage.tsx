@@ -3,7 +3,6 @@ import { IBooking } from "../../../models/IBookings";
 import { ActionType, BookingsReducer } from "../../../reducers/BookingsReducer";
 import AdminBookings from "./AdminBookings";
 import { AdminForm } from "./AdminForm";
-import NewBookingForm from "../Admin/NewBookingForm";
 
 import {
   AdminContainer,
@@ -12,23 +11,24 @@ import {
   AdminFormContainer,
 } from "../../styled/Admin";
 import { useLoaderData } from "react-router-dom";
+import { AdminNewBooking } from "./AdminNewBooking";
 
 export const AdminPage: React.FC = () => {
   const bookings = useLoaderData() as IBooking[];
   const [bookingsList, dispatch] = useReducer(BookingsReducer, bookings);
-  const [newBooking, setNewBooking] = useState<Partial<IBooking>>({});
+  // const [newBooking, setNewBooking] = useState<Partial<IBooking>>({});
 
   const [selectedBooking, setSelectedBooking] = useState<IBooking | null>(null);
 
-  const handleAddBooking = () => {
-    if (newBooking) {
-      dispatch({
-        type: ActionType.ADDED,
-        payload: JSON.stringify(newBooking),
-      });
-      setNewBooking({});
-    }
-  };
+  // const handleAddBooking = () => {
+  //   if (newBooking) {
+  //     dispatch({
+  //       type: ActionType.ADDED,
+  //       payload: JSON.stringify(newBooking),
+  //     });
+  //     setNewBooking({});
+  //   }
+  // };
 
   const handleUpdateBooking = (id: string, updates: Partial<IBooking>) => {
     const updatedBooking = bookingsList.find((booking) => booking._id === id);
@@ -50,9 +50,9 @@ export const AdminPage: React.FC = () => {
     setSelectedBooking(null);
   };
 
-  const handleNewBookingChange = (updates: Partial<IBooking>) => {
-    setNewBooking((prev) => ({ ...prev, ...updates }));
-  };
+  // const handleNewBookingChange = (updates: Partial<IBooking>) => {
+  //   setNewBooking((prev) => ({ ...prev, ...updates }));
+  // };
 
   const [isAddingNewBooking, setIsAddingNewBooking] = useState(false);
 
@@ -60,10 +60,10 @@ export const AdminPage: React.FC = () => {
     setIsAddingNewBooking(true);
   };
 
-  const handleSaveNewBooking = () => {
-    handleAddBooking();
-    setIsAddingNewBooking(false);
-  };
+  // const handleSaveNewBooking = () => {
+  //   handleAddBooking();
+  //   setIsAddingNewBooking(false);
+  // };
 
   return (
     <AdminContainer>
@@ -79,11 +79,12 @@ export const AdminPage: React.FC = () => {
 
         {isAddingNewBooking ? (
           <AddBookingContainer>
-            <NewBookingForm
+            <AdminNewBooking/>
+            {/* <NewBookingForm
               newBooking={newBooking}
               onChange={handleNewBookingChange}
               onAddNewBooking={handleSaveNewBooking}
-            />
+            /> */}
           </AddBookingContainer>
         ) : (
           <AdminFormContainer>
