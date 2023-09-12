@@ -10,6 +10,8 @@ import {
 import { FormInput } from '../../styled/Inputs';
 import { CenteredWrapper, FormWrapper } from '../../styled/Wrappers';
 import { UserTabelChoices } from './UsersTabelChoices';
+import { ActionType, BookingsReducer } from '../../../reducers/BookingsReducer';
+import { useReducer } from 'react';
 
 interface IBookingFormProps {
 	bookingInfo: {
@@ -32,6 +34,8 @@ export const BookingForm = ({
 		resolver: zodResolver(bookingSchema),
 	});
 
+	const [, dispatch] = useReducer(BookingsReducer, []);
+
 	const userChoices = {
 		guests: numberOfGuests,
 		day: dayOfService,
@@ -53,6 +57,11 @@ export const BookingForm = ({
 		};
 
 		createBooking(postMsg);
+
+		dispatch({
+			type: ActionType.ADDED,
+			payload: JSON.stringify(postMsg)
+		});
 		reset();
 	};
 
