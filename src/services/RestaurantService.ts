@@ -10,7 +10,7 @@ export interface ICreateBooking {
 	customer: ICustomer;
 }
 
-interface ICustomer {
+export interface ICustomer {
 	name: string;
 	lastname: string;
 	email: string;

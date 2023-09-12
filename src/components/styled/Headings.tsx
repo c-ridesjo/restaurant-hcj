@@ -18,3 +18,10 @@ export const H2 = styled.h2`
   margin-top: 20px;
 `;
 
+export const H3 = styled.h3`
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  color: black;
+  text-align: center;
+  margin-bottom: 7rem;
+`;
