@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { IBooking } from "../../../models/IBookings";
 import { H2 } from "../../styled/Headings";
+import { AddButton, DeleteButton } from "../../styled/Buttons";
 import {
-  AddButton,
   AdmP,
   BookingBox,
-  DeleteButton,
 } from "../../styled/Admin";
 
 interface AdminBookingsProps {

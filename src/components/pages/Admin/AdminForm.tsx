@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { IBooking } from "../../../models/IBookings";
+import { SaveButton } from "../../styled/Buttons";
 import {
   StyledInput,
-  SaveButton,
   AdminP,
   Label,
   InputContainer,

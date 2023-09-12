@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { HeaderWrapper, ListWrapper } from "./styled/Wrappers";
+import { AdminBtn } from "./styled/Buttons";
 
 export const Header = () => {
   const areYouAdmin = () => {
     if (confirm('Are you sure you are admin?')) {
       location.href = '/admin';
     } else {
-      location.href = 'http://localhost:5173/';
+      location.href = '/';
     }
   }
 
@@ -25,7 +26,7 @@ export const Header = () => {
             <Link to={'/contact'}>Contact</Link>
           </li>
         </ListWrapper>
-        <button onClick={areYouAdmin}>Admin</button>
+        <AdminBtn onClick={areYouAdmin}>Admin</AdminBtn>
       </nav>
     </HeaderWrapper>
   );

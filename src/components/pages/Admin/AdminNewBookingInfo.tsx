@@ -6,7 +6,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormInput } from "../../styled/Inputs";
 import { FormWrapper } from "../../styled/Wrappers";
-import { SaveButton } from "../../styled/Admin";
+import { SaveButton } from "../../styled/Buttons";
 
 interface IAdminBookingInfoProps {
   onSubmit: (data: FieldValues) => void;

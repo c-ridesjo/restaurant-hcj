@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCookies } from 'react-cookie';
-import { CookieBanner, ButtonGroup, CookieButton, CookieMessage } from './styled/Cookies';
+import { CookieBanner, CookieMessage } from './styled/Cookies';
+import { ButtonGroup, CookieButton } from "./styled/Buttons";
 
 const AcceptCookies: React.FC = () => {
   const [cookies, setCookie] = useCookies(['userAcceptedCookies']);

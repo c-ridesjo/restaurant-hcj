@@ -78,26 +78,6 @@ export const AdminFormTable = styled.table`
   border: 1px solid black;
 `;
 
-export const SaveButton = styled.button`
-  padding: 10px 15px;
-  bottom: 10px;
-  background-color: #3a8f81;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: 0.3s;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  justify-content: center;
-
-  &:hover {
-    background-color: #98afba;
-  }
-`;
-
 export const AdminArticle = styled.article`
   overflow-y: auto;
   width: 60%;
@@ -168,36 +148,4 @@ export const LeftInputs = styled.div`
 
 export const RightInputs = styled.div`
   width: 45%;
-`;
-
-export const DeleteButton = styled.button`
-  padding: 10px 15px;
-  margin-left: 2rem;
-  background-color: #3a8f81;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: 0.3s;
-  transform: translateX(-50%);
-  text-align: center;
-
-  &:hover {
-    background-color: #98afba;
-  }
-`;
-
-export const AddButton = styled.button`
-  padding: 10px 15px;
-  margin-bottom: 1rem;
-  background-color: #3a8f81;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: 0.3s;
-
-  &:hover {
-    background-color: #98afba;
-  }
 `;
