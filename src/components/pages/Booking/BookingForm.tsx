@@ -1,6 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useReducer, useState } from 'react';
 import type { FieldValues } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
+import { IResponse } from '../../../models/IResponse';
+import { ActionType, BookingsReducer } from '../../../reducers/BookingsReducer';
 import { BookingSchema, bookingSchema } from '../../../schemas/bookingSchema';
 import {
 	ICreateBooking,
@@ -10,8 +13,6 @@ import {
 import { FormInput } from '../../styled/Inputs';
 import { CenteredWrapper, FormWrapper } from '../../styled/Wrappers';
 import { UserTabelChoices } from './UsersTabelChoices';
-import { ActionType, BookingsReducer } from '../../../reducers/BookingsReducer';
-import { useReducer } from 'react';
 
 interface IBookingFormProps {
 	bookingInfo: {
@@ -42,7 +43,10 @@ export const BookingForm = ({
 		time: serviceTime,
 	};
 
-	const onSubmit = (data: FieldValues) => {
+	const [bookingConfirmation, setBookingConfirmation] =
+		useState<JSX.Element | null>(null);
+
+	const onSubmit = async (data: FieldValues) => {
 		const postMsg: ICreateBooking = {
 			restaurantId: restaurantId,
 			date: dayOfService,
@@ -56,16 +60,41 @@ export const BookingForm = ({
 			},
 		};
 
-		createBooking(postMsg);
+		const sendBooking = await createBooking(postMsg).then((res: IResponse) => {
+			if (res.acknowledged === true) {
+				console.log(res.acknowledged);
+				return (
+					<CenteredWrapper>
+						<h2>Booking confirmed!</h2>
+						<p>
+							You have successfully booked a table for {numberOfGuests} people
+							at
+							{serviceTime} on {dayOfService}
+						</p>
+					</CenteredWrapper>
+				);
+			} else {
+				return (
+					<CenteredWrapper>
+						<h2>Unable to book table</h2>
+						<p>
+							Something went wrong, please try again or contact our support.
+						</p>
+					</CenteredWrapper>
+				);
+			}
+		});
 
 		dispatch({
 			type: ActionType.ADDED,
-			payload: JSON.stringify(postMsg)
+			payload: JSON.stringify(postMsg),
 		});
 		reset();
+		console.log(sendBooking);
+		setBookingConfirmation(sendBooking);
 	};
 
-	//console.log(numberOfGuests, dayOfService, serviceTime);
+	console.log(bookingConfirmation);
 
 	return (
 		<>
@@ -97,6 +126,7 @@ export const BookingForm = ({
 					</button>
 				</FormWrapper>
 			</CenteredWrapper>
+			{bookingConfirmation}
 		</>
 	);
 };
