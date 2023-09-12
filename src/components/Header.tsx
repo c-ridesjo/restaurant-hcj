@@ -7,7 +7,7 @@ export const Header = () => {
     if (confirm('Are you sure you are admin?')) {
       location.href = '/admin';
     } else {
-      location.href = 'http://localhost:5173/';
+      location.href = '/';
     }
   }
 

@@ -34,6 +34,25 @@ export const SmallWrapper = styled.div`
 	margin: 1rem;
 `;
 
+export const GreenWrapper = styled.div`
+	background-color: #3a8f81;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 0.6rem;
+	color: white;
+
+	width: 450px;
+	height: 350px;
+	padding: 30px;
+	gap: 10px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	position: absolute;
+	top: 210px;
+`;
+
 export const ListWrapper = styled.ul`
 	display: flex;
 	justify-content: center;

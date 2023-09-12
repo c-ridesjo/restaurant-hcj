@@ -8,10 +8,10 @@ import {
 	restaurantId,
 } from '../../../services/RestaurantService';
 import { FormInput } from '../../styled/Inputs';
-import { CenteredWrapper, FormWrapper } from '../../styled/Wrappers';
+import { CenteredWrapper, FormWrapper, GreenWrapper } from '../../styled/Wrappers';
 import { UserTabelChoices } from './UsersTabelChoices';
 import { ActionType, BookingsReducer } from '../../../reducers/BookingsReducer';
-import { useReducer } from 'react';
+import { useReducer, useState } from 'react';
 import { BookTableBtn } from '../../styled/Buttons';
 
 interface IBookingFormProps {
@@ -35,6 +35,7 @@ export const BookingForm = ({
 		resolver: zodResolver(bookingSchema),
 	});
 
+	const [isShowingGDPRMsg, setIsShowingGDPRMsg] = useState(true);
 	const [, dispatch] = useReducer(BookingsReducer, []);
 
 	const userChoices = {
@@ -63,9 +64,15 @@ export const BookingForm = ({
 			type: ActionType.ADDED,
 			payload: JSON.stringify(postMsg)
 		});
+
 		reset();
 	};
 
+	const handleDeclineGDPR = () => {
+		setIsShowingGDPRMsg(false);
+		location.href = '/';
+	}
+ 
 	//console.log(numberOfGuests, dayOfService, serviceTime);
 
 	return (
@@ -97,6 +104,14 @@ export const BookingForm = ({
 						Book table
 					</BookTableBtn>
 				</FormWrapper>
+
+				{ isShowingGDPRMsg ?
+					<GreenWrapper>We store personal data to be able to contact customers.
+						All data is deleted when no longer needed, or three years at the longest.
+						<button onClick={() => setIsShowingGDPRMsg(false)}>Accept</button>
+						<button onClick={handleDeclineGDPR}>Decline</button>
+					</GreenWrapper> : ''}
+
 			</CenteredWrapper>
 		</>
 	);
