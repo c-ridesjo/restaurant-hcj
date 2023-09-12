@@ -12,6 +12,7 @@ import { CenteredWrapper, FormWrapper } from '../../styled/Wrappers';
 import { UserTabelChoices } from './UsersTabelChoices';
 import { ActionType, BookingsReducer } from '../../../reducers/BookingsReducer';
 import { useReducer } from 'react';
+import { BookTableBtn } from '../../styled/Buttons';
 
 interface IBookingFormProps {
 	bookingInfo: {
@@ -92,9 +93,9 @@ export const BookingForm = ({
 						placeholder='Phone number'
 					/>
 					{errors.phone && <p>{`${errors.phone.message}`}</p>}
-					<button type='submit' disabled={isSubmitting}>
+					<BookTableBtn type='submit' disabled={isSubmitting}>
 						Book table
-					</button>
+					</BookTableBtn>
 				</FormWrapper>
 			</CenteredWrapper>
 		</>

@@ -9,26 +9,8 @@ export const CookieBanner = styled.div`
   color: #ecf0f1;
   padding: 10px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-`;
-
-export const ButtonGroup = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-
-export const CookieButton = styled.button`
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #2980b9;
-  color: #fff;
-
-  &:hover {
-    background-color: #3498db;
-  }
+  font-size: 1.3rem;
 `;
 
 export const CookieMessage = styled.p`

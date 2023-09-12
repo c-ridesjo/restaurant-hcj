@@ -2,13 +2,13 @@ import React from "react";
 import { IBooking } from "../../../models/IBookings";
 import {
   StyledInput,
-  SaveButton,
   Label,
   InputContainer,
   LeftInputs,
   RightInputs,
 } from "../../styled/Admin";
 import { H3 } from "../../styled/Headings";
+import { SaveButton } from "../../styled/Buttons";
 
 interface NewBookingFormProps {
   newBooking: Partial<IBooking>;
