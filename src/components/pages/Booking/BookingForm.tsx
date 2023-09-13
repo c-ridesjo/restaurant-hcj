@@ -10,6 +10,7 @@ import {
 	createBooking,
 	restaurantId,
 } from '../../../services/RestaurantService';
+import { LoadingSpinner } from '../../LoadingSpinner';
 import { BookTableBtn } from '../../styled/Buttons';
 import { FormInput } from '../../styled/Inputs';
 import {
@@ -43,16 +44,19 @@ export const BookingForm = ({
 	const [isShowingGDPRMsg, setIsShowingGDPRMsg] = useState(true);
 	const [, dispatch] = useReducer(BookingsReducer, []);
 
+	const [bookingConfirmation, setBookingConfirmation] =
+		useState<JSX.Element | null>(null);
+
+	const [isWaitingForResponse, setIsWaitingForResponse] = useState(false);
+
 	const userChoices = {
 		guests: numberOfGuests,
 		day: dayOfService,
 		time: serviceTime,
 	};
 
-	const [bookingConfirmation, setBookingConfirmation] =
-		useState<JSX.Element | null>(null);
-
 	const onSubmit = async (data: FieldValues) => {
+		setIsWaitingForResponse(true);
 		const postMsg: ICreateBooking = {
 			restaurantId: restaurantId,
 			date: dayOfService,
@@ -67,16 +71,12 @@ export const BookingForm = ({
 		};
 
 		const sendBooking = await createBooking(postMsg).then((res: IResponse) => {
+			setIsWaitingForResponse(false);
 			if (res.acknowledged === true) {
 				console.log(res.acknowledged);
 				return (
 					<CenteredWrapper>
 						<h2>Booking confirmed!</h2>
-						<p>
-							You have successfully booked a table for {numberOfGuests} people
-							at
-							{serviceTime} on {dayOfService}
-						</p>
 					</CenteredWrapper>
 				);
 			} else {
@@ -110,31 +110,42 @@ export const BookingForm = ({
 		<>
 			<CenteredWrapper>
 				<UserTabelChoices userChoices={userChoices} />
-				<FormWrapper onSubmit={handleSubmit(onSubmit)}>
-					<FormInput
-						{...register('firstName')}
-						type='text'
-						placeholder='Firstname'
-					/>
-					{errors.firstName && <p>{`${errors.firstName.message}`}</p>}
-					<FormInput
-						{...register('lastName')}
-						type='text'
-						placeholder='Lastname'
-					/>
-					{errors.lastName && <p>{`${errors.lastName.message}`}</p>}
-					<FormInput {...register('email')} type='email' placeholder='Email' />
-					{errors.email && <p>{`${errors.email.message}`}</p>}
-					<FormInput
-						{...register('phone')}
-						type='tel'
-						placeholder='Phone number'
-					/>
-					{errors.phone && <p>{`${errors.phone.message}`}</p>}
-					<BookTableBtn type='submit' disabled={isSubmitting}>
-						Book table
-					</BookTableBtn>
-				</FormWrapper>
+				{isWaitingForResponse ? (
+					<LoadingSpinner />
+				) : bookingConfirmation === null ? (
+					<FormWrapper onSubmit={handleSubmit(onSubmit)}>
+						<FormInput
+							{...register('firstName')}
+							type='text'
+							placeholder='Firstname'
+						/>
+						{errors.firstName && <p>{`${errors.firstName.message}`}</p>}
+						<FormInput
+							{...register('lastName')}
+							type='text'
+							placeholder='Lastname'
+						/>
+						{errors.lastName && <p>{`${errors.lastName.message}`}</p>}
+						<FormInput
+							{...register('email')}
+							type='email'
+							placeholder='Email'
+						/>
+						{errors.email && <p>{`${errors.email.message}`}</p>}
+						<FormInput
+							{...register('phone')}
+							type='tel'
+							placeholder='Phone number'
+						/>
+						{errors.phone && <p>{`${errors.phone.message}`}</p>}
+						<BookTableBtn type='submit' disabled={isSubmitting}>
+							Book table
+						</BookTableBtn>
+					</FormWrapper>
+				) : (
+					bookingConfirmation
+				)}
+
 				{isShowingGDPRMsg ? (
 					<GreenWrapper>
 						We store personal data to be able to contact customers. All data is
@@ -146,7 +157,6 @@ export const BookingForm = ({
 					''
 				)}
 			</CenteredWrapper>
-			{bookingConfirmation}
 		</>
 	);
 };
