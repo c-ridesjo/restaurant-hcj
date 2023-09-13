@@ -10,7 +10,7 @@ const AcceptCookies: React.FC = () => {
   const [showMessage, setShowMessage] = useState(false);
 
   const handleAccept = () => {
-    setCookie('userAcceptedCookies', true, { path: '/' });  // valet sparas i userAcceptedCookies
+    setCookie('userAcceptedCookies', true, { path: '/' });
     setMessage('Accepted cookies');
     setVisible(false);
     setShowMessage(true);

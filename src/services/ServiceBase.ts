@@ -7,11 +7,6 @@ export const get = async <T>(endpoint: string) => {
 	return response.data;
 };
 
-export const post1 = async <T>(endpoint: string, postMsg: unknown) => {
-	const response = await axios.post<T>(`${BASE_URL}${endpoint}`, postMsg);
-	return response.data;
-};
-
 export const post = async (endpoint: string, postMsg: unknown) => {
 	const response = await axios.post(`${BASE_URL}${endpoint}`, postMsg);
 	return response.data;
