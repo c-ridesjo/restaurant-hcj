@@ -72,11 +72,6 @@ export const BookingForm = ({
 				return (
 					<CenteredWrapper>
 						<h2>Booking confirmed!</h2>
-						<p>
-							You have successfully booked a table for {numberOfGuests} people
-							at
-							{serviceTime} on {dayOfService}
-						</p>
 					</CenteredWrapper>
 				);
 			} else {
@@ -112,31 +107,39 @@ export const BookingForm = ({
 		<>
 			<CenteredWrapper>
 				<UserTabelChoices userChoices={userChoices} />
-				<FormWrapper onSubmit={handleSubmit(onSubmit)}>
-					<FormInput
-						{...register('firstName')}
-						type='text'
-						placeholder='Firstname'
-					/>
-					{errors.firstName && <p>{`${errors.firstName.message}`}</p>}
-					<FormInput
-						{...register('lastName')}
-						type='text'
-						placeholder='Lastname'
-					/>
-					{errors.lastName && <p>{`${errors.lastName.message}`}</p>}
-					<FormInput {...register('email')} type='email' placeholder='Email' />
-					{errors.email && <p>{`${errors.email.message}`}</p>}
-					<FormInput
-						{...register('phone')}
-						type='tel'
-						placeholder='Phone number'
-					/>
-					{errors.phone && <p>{`${errors.phone.message}`}</p>}
-					<BookTableBtn type='submit' disabled={isSubmitting}>
-						Book table
-					</BookTableBtn>
-				</FormWrapper>
+				{bookingConfirmation === null ? (
+					<FormWrapper onSubmit={handleSubmit(onSubmit)}>
+						<FormInput
+							{...register('firstName')}
+							type='text'
+							placeholder='Firstname'
+						/>
+						{errors.firstName && <p>{`${errors.firstName.message}`}</p>}
+						<FormInput
+							{...register('lastName')}
+							type='text'
+							placeholder='Lastname'
+						/>
+						{errors.lastName && <p>{`${errors.lastName.message}`}</p>}
+						<FormInput
+							{...register('email')}
+							type='email'
+							placeholder='Email'
+						/>
+						{errors.email && <p>{`${errors.email.message}`}</p>}
+						<FormInput
+							{...register('phone')}
+							type='tel'
+							placeholder='Phone number'
+						/>
+						{errors.phone && <p>{`${errors.phone.message}`}</p>}
+						<BookTableBtn type='submit' disabled={isSubmitting}>
+							Book table
+						</BookTableBtn>
+					</FormWrapper>
+				) : (
+					bookingConfirmation
+				)}
 				{isShowingGDPRMsg ? (
 					<GreenWrapper>
 						We store personal data to be able to contact customers. All data is
@@ -148,7 +151,6 @@ export const BookingForm = ({
 					''
 				)}
 			</CenteredWrapper>
-			{bookingConfirmation}
 		</>
 	);
 };
