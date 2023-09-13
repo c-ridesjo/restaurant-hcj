@@ -17,8 +17,6 @@ import { removeBooking } from "../../../services/RestaurantService";
 export const AdminPage: React.FC = () => {
   const bookings = useLoaderData() as IBooking[];
   const [bookingsList, dispatch] = useReducer(BookingsReducer, []);
-  // const [newBooking, setNewBooking] = useState<Partial<IBooking>>({});
-
   const [selectedBooking, setSelectedBooking] = useState<IBooking | null>(null);
 
 
@@ -28,16 +26,6 @@ export const AdminPage: React.FC = () => {
       payload: JSON.stringify(bookings)
     });
   }, [bookings]);
-
-  // const handleAddBooking = () => {
-  //   if (newBooking) {
-  //     dispatch({
-  //       type: ActionType.ADDED,
-  //       payload: JSON.stringify(newBooking),
-  //     });
-  //     setNewBooking({});
-  //   }
-  // };
 
   const handleUpdateBooking = (id: string, updates: Partial<IBooking>) => {
     const updatedBooking = bookingsList.find((booking) => booking._id === id);
@@ -60,20 +48,11 @@ export const AdminPage: React.FC = () => {
     setSelectedBooking(null);
   };
 
-  // const handleNewBookingChange = (updates: Partial<IBooking>) => {
-  //   setNewBooking((prev) => ({ ...prev, ...updates }));
-  // };
-
   const [isAddingNewBooking, setIsAddingNewBooking] = useState(false);
 
   const handleAddNewBookingClick = () => {
     setIsAddingNewBooking(true);
   };
-
-  // const handleSaveNewBooking = () => {
-  //   handleAddBooking();
-  //   setIsAddingNewBooking(false);
-  // };
 
   return (
     <AdminContainer>
@@ -90,11 +69,6 @@ export const AdminPage: React.FC = () => {
         {isAddingNewBooking ? (
           <AddBookingContainer>
             <AdminNewBooking/>
-            {/* <NewBookingForm
-              newBooking={newBooking}
-              onChange={handleNewBookingChange}
-              onAddNewBooking={handleSaveNewBooking}
-            /> */}
           </AddBookingContainer>
         ) : (
           <AdminFormContainer>

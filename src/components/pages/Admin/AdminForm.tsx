@@ -30,7 +30,6 @@ export const AdminForm: React.FC<AdminFormProps> = ({ booking, onUpdate }) => {
       getCustomer(booking.customerId).then(setCustomerData);
     } else {
       setCustomerData(null);
-      //setFormData(null);
     }
   }, [booking]);
 

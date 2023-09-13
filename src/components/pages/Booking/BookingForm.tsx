@@ -106,8 +106,6 @@ export const BookingForm = ({
 		location.href = '/';
 	};
 
-	//console.log(numberOfGuests, dayOfService, serviceTime);
-
 	return (
 		<>
 			<CenteredWrapper>
