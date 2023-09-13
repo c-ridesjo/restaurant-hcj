@@ -10,6 +10,7 @@ import {
 	createBooking,
 	restaurantId,
 } from '../../../services/RestaurantService';
+import { LoadingSpinner } from '../../LoadingSpinner';
 import { BookTableBtn } from '../../styled/Buttons';
 import { FormInput } from '../../styled/Inputs';
 import {
@@ -43,16 +44,19 @@ export const BookingForm = ({
 	const [isShowingGDPRMsg, setIsShowingGDPRMsg] = useState(true);
 	const [, dispatch] = useReducer(BookingsReducer, []);
 
+	const [bookingConfirmation, setBookingConfirmation] =
+		useState<JSX.Element | null>(null);
+
+	const [isWaitingForResponse, setIsWaitingForResponse] = useState(false);
+
 	const userChoices = {
 		guests: numberOfGuests,
 		day: dayOfService,
 		time: serviceTime,
 	};
 
-	const [bookingConfirmation, setBookingConfirmation] =
-		useState<JSX.Element | null>(null);
-
 	const onSubmit = async (data: FieldValues) => {
+		setIsWaitingForResponse(true);
 		const postMsg: ICreateBooking = {
 			restaurantId: restaurantId,
 			date: dayOfService,
@@ -67,6 +71,7 @@ export const BookingForm = ({
 		};
 
 		const sendBooking = await createBooking(postMsg).then((res: IResponse) => {
+			setIsWaitingForResponse(false);
 			if (res.acknowledged === true) {
 				console.log(res.acknowledged);
 				return (
@@ -107,7 +112,9 @@ export const BookingForm = ({
 		<>
 			<CenteredWrapper>
 				<UserTabelChoices userChoices={userChoices} />
-				{bookingConfirmation === null ? (
+				{isWaitingForResponse ? (
+					<LoadingSpinner />
+				) : bookingConfirmation === null ? (
 					<FormWrapper onSubmit={handleSubmit(onSubmit)}>
 						<FormInput
 							{...register('firstName')}
@@ -140,6 +147,7 @@ export const BookingForm = ({
 				) : (
 					bookingConfirmation
 				)}
+
 				{isShowingGDPRMsg ? (
 					<GreenWrapper>
 						We store personal data to be able to contact customers. All data is

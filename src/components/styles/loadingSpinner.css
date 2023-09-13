@@ -1,0 +1,63 @@
+.visually-hidden {
+  position: absolute;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+#loading-spinner {
+  display: flex;
+  flex-direction: row;
+  width: 90px;
+  height: 120px;
+}
+
+#loading-spinner>.spinner-object {
+  width: 17px;
+  height: 80px;
+  margin: auto auto;
+  border-radius: 4px;
+}
+
+.spinner-object-one {
+  animation: square-anim 1200ms cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s infinite;
+}
+
+.spinner-object-two {
+  animation: square-anim 1200ms cubic-bezier(0.445, 0.05, 0.55, 0.95) 200ms infinite;
+}
+
+.spinner-object-three {
+  animation: square-anim 1200ms cubic-bezier(0.445, 0.05, 0.55, 0.95) 400ms infinite;
+}
+
+@keyframes square-anim {
+  0% {
+    height: 80px;
+    background-color: rgb(111, 240, 197);
+  }
+
+  20% {
+    height: 80px;
+  }
+
+  40% {
+    height: 120px;
+    background-color: rgb(2, 240, 180);
+  }
+
+  80% {
+    height: 80px;
+  }
+
+  100% {
+    height: 80px;
+    background-color: rgb(111, 240, 165);
+  }
+}
